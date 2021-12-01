@@ -1,0 +1,83 @@
+<?php
+ 
+
+$connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
+
+
+if(!empty($_POST)){
+    extract($_POST);
+    $validation=true;
+  }
+
+  if(isset($_POST['inscription'])){
+    
+    $login=$_POST['login'];
+    $password=$_POST['mdp'];
+    $confpassword=$_POST['confmdp'];
+    
+    $login=htmlentities(trim($login));
+    $password=htmlentities(trim($password));
+    $confpassword=htmlentities(trim($confpassword));
+      
+
+
+    if (empty($login)) {
+      $validation=false;
+      $loginErr .= "Ce champ est requis.";
+    }
+    else {
+        
+      $requestLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login. "'"); 
+        if(mysqli_num_rows($requestLogin)){
+          $validation=false;
+          $loginErr .= "Ce nom d'utilisateur est déjà pris.";
+      }
+    }
+
+    
+    if(empty($password)){
+      $validation=false;
+      $passwordErr .= "Ce champ est requis";
+    }
+    elseif ($confpassword !== $password) {
+      $validation=false;
+      $confpasswordErr .= "La confirmation ne correspond pas au mot de passe.";
+    } 
+    
+    
+  if ($validation){
+  
+    $requestInsert = mysqli_query($connect, "INSERT INTO `utilisateurs` (login, password) VALUES ('$login', '$password')"); 
+    header('Location:connexion.php');
+  }
+  }
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription || UC</title>
+</head>
+<body>
+    <form action="inscription.php" method="post">
+
+        <label for="name">Login: </label>
+        <input type="text" name="login" id="login">
+
+        <label for="name">Mot de passe: </label>
+        <input type="password" name="mdp" id="mdp">
+
+        <label for="name">Confirmation mot de passe: </label>
+        <input type="password" name="confmdp" id="confmdp">
+
+
+        <button type="submit" name="inscription">Sign in</button>
+
+    </form>
+</body>
+</html>
