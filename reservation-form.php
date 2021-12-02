@@ -5,38 +5,73 @@ début, date de fin. -->
 
 session_start();
 
+
 $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
-$login = $_SESSION['login']; 
+$login = $_SESSION['login'];  
+        
+
+if(!empty($_POST)){
+    extract($_POST);
+    $validation=true;
+  }
 
 if(isset($_POST['reserver'])){
 
-
     $titre=$_POST['titre'];
     $description=$_POST['description'];
-    $debut=$_POST['debutdate'];
-    $fin=$_POST['findate'];
+
+    //Pour transformer le mode d'input - format de date vers celui de sqli afin de permettre plus tard la comparaison entre les deux
+        $debut=$_POST['debutdate'];
+        $time = strtotime($debut);
+    $newformatDebut = date("Y-m-d H:i:s",$time);
+
+        $fin=$_POST['findate'];
+        $time1 = strtotime($fin);
+    $newformatFin = date("Y-m-d H:i:s",$time1);
+
     
-    $titre=htmlentities($titre);
-    $description=htmlentities($description);
-    // $confpassword=htmlentities(trim($confpassword));
 
-    $requestId = mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `login`='".$login."'");
-    $recupId = mysqli_fetch_assoc($requestId);
-
-    var_dump($recupId);
-
-    // d'abord on prend l'id de la session ensuite on va faire les erreurs possibles et si pas d'erreurs alors on rentre dans le tableau MAIS SI DEJA QQCHOSE DE RENTRE alors on met une erreur --- if pas de truc déjà alors tu rentres else tu fais une erreur
+    // on va d'abord vérifier les erreurs possibles : champs vides, créneaux déjà réservés == validation false
+    // si pas d'erreur alors tu me prends l'id de la session ET tu me rentres sa réservation
 
 
     if(empty($titre)){
-
+        $validation = false;
+        $titreVide = "Veuillez rentrer un titre.";
+        echo $titreVide;     
+    }
+    if(empty($description)){
+        $validation = false;
+        $descriptionVide = "Veuillez rentrer une description.";
+        echo $descriptionVide;     
     }
 
-    // à réfléchir au fait que si déjà pris ce créneaux on lui dit
+    // //pour récupérer les dates afin de vérifier s'il y a disponibilité
+    $dateVerif=mysqli_query($connect, "SELECT `debut`, `fin` FROM `reservations`");
+    $dateFetch=mysqli_fetch_all($dateVerif, MYSQLI_ASSOC);
 
-    // $requestverif=mysqli_query($connect, "SELECT `debut`, `fin` FROM `reservations` WHERE `debut` = '".$_POST['debutdate']."'");
-}
+    foreach($dateFetch as $date){
+
+        if($date['debut']==$newformatDebut && $date['fin']==$newformatFin){
+               $validation = false;
+               $verifErr = "Le créneaux est indisponible, veuillez-vous référer au planning et choisir un autre créneaux.";
+               echo $verifErr;      
+        }
+    }
+
+
+    if ($validation){
+
+        $requestId = mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `login`='".$login."'");
+        $recupId = mysqli_fetch_assoc($requestId);
+        foreach ($recupId as $id){
+            $queryInsert=mysqli_query($connect, "INSERT INTO `reservations`(`titre`, `description`, `debut`, `fin`, `id_utilisateur`) VALUES ('$titre','$description','$debut','$fin','$id')");
+        }  
+    }
+ }
+
+        
 
 ?>
 
@@ -50,7 +85,7 @@ if(isset($_POST['reserver'])){
     <title>Réservation form || UC</title>
 </head>
 <body>
-    <form action="inscription.php" method="post">
+    <form action="reservation-form.php" method="post">
 
             <label for="name">Titre: </label>
             <input type="text" name="titre" id="titre">
@@ -59,13 +94,10 @@ if(isset($_POST['reserver'])){
             <textarea name="description" id="description"></textarea>
 
             <label for="name">Date de début: </label>
-            <input type="date" name="debutdate" id="debutdate">
+            <input type="datetime-local" name="debutdate" id="debutdate" required>
 
             <label for="name">Date de fin: </label>
-            <input type="date" name="findate" id="findate">
-
-            <!-- <label for="name">Horaire: </label>
-            <input type="time" name="heure" id="heure" min="08:00" max="19:00"> -->
+            <input type="datetime-local" name="findate" id="findate" required>
 
 
         <button type="submit" name="reserver">Réserver</button>

@@ -7,3 +7,10 @@ utilisateur clique sur une réservation, il est amené sur une page dédiée.
 
 Les réservations se font du lundi au vendredi et de 8h à 19h. Les créneaux
 ont une durée fixe d’une heure. -->
+
+
+<!--
+    pour changer l'affichage de l'heure
+    
+$debutdateformat=mysqli_request($connect, "SELECT DATE_FORMAT(debut, '%d/%m/%Y') FROM reservations");
+ $findateformat=mysqli_request($connect, "SELECT DATE_FORMAT(fin, '%d/%m/%Y') FROM reservations"); -->

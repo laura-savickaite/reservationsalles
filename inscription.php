@@ -1,8 +1,8 @@
 <?php
  
-
 $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
+var_dump($_SESSION);
 
 if(!empty($_POST)){
     extract($_POST);
@@ -48,7 +48,6 @@ if(!empty($_POST)){
   if ($validation){
   
     $requestInsert = mysqli_query($connect, "INSERT INTO `utilisateurs` (login, password) VALUES ('$login', '$password')"); 
-    header('Location:connexion.php');
   }
   }
 
