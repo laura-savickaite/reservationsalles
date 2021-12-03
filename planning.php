@@ -14,3 +14,108 @@ ont une durée fixe d’une heure. -->
     
 $debutdateformat=mysqli_request($connect, "SELECT DATE_FORMAT(debut, '%d/%m/%Y') FROM reservations");
  $findateformat=mysqli_request($connect, "SELECT DATE_FORMAT(fin, '%d/%m/%Y') FROM reservations"); -->
+
+ <?php
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Planning || UC</title>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>            </th>
+            <th>Lundi</th>
+            <th>Mardi</th>
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>   
+            <td>
+                8h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                9h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                10h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                11h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                12h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                13h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                14h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                15h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                16h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                17h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                18h
+            </td>     
+        </tr>
+
+        <tr>   
+            <td>
+                19h
+            </td>     
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
