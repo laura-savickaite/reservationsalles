@@ -17,6 +17,36 @@ $debutdateformat=mysqli_request($connect, "SELECT DATE_FORMAT(debut, '%d/%m/%Y')
 
  <?php
 
+$connect = mysqli_connect('localhost', 'root', '', 'reservationsalles');
+
+mysqli_set_charset($connect,"utf8");
+
+$queryPlanning = mysqli_query($connect, "SELECT utilisateurs.login, reservations.titre, reservations.debut, reservations.fin, reservations.type_activité  FROM `utilisateurs` INNER JOIN reservations ON id_utilisateur=utilisateurs.id");
+$fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
+
+// var_dump($fetchPlanning);
+
+foreach ($fetchPlanning as $value){
+    // var_dump($value);
+    // echo($value['debut']);
+    $dateDebut=$value['debut'];
+        $timeDebut = strtotime($dateDebut);
+    $newdateDebut = date('g:i D j F Y',$timeDebut);
+    echo $newdateDebut .'</br>';
+
+    // echo date_format($dateDebut, 'g:ia \o\n l jS F Y');
+    // echo "<td>". $value ['login'] ."</td>";
+    
+}
+
+// il faut que je fasse qu'il sache quelle semaine on est 
+// et place les friday dans les vendredi etc...
+
+
+
+
+
+
 
 ?>
 
@@ -45,73 +75,73 @@ $debutdateformat=mysqli_request($connect, "SELECT DATE_FORMAT(debut, '%d/%m/%Y')
     <tbody>
         <tr>   
             <td>
-                8h
+                8:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                9h
+                9:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                10h
+                10:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                11h
+                11:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                12h
+                12:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                13h
+                13:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                14h
+                14:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                15h
+                15:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                16h
+                16:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                17h
+                17:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                18h
+                18:00
             </td>     
         </tr>
 
         <tr>   
             <td>
-                19h
+                19:00
             </td>     
         </tr>
     </tbody>
@@ -119,3 +149,4 @@ $debutdateformat=mysqli_request($connect, "SELECT DATE_FORMAT(debut, '%d/%m/%Y')
 
 </body>
 </html>
+

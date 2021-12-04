@@ -37,6 +37,8 @@ if(isset($_POST['reserver'])){
     // on va d'abord vérifier les erreurs possibles : champs vides, créneaux déjà réservés == validation false
     // si pas d'erreur alors tu me prends l'id de la session ET tu me rentres sa réservation
 
+    //il faut que la réservation ne puisse être de plus d'une heure si heure de fin - heure de début > 1 alors dire non vous pouvez pas
+
 
     if(empty($titre)){
         $validation = false;
@@ -72,7 +74,7 @@ if(isset($_POST['reserver'])){
         $requestId = mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `login`='".$login."'");
         $recupId = mysqli_fetch_assoc($requestId);
         foreach ($recupId as $id){
-            $queryInsert=mysqli_query($connect, "INSERT INTO `reservations`(`titre`, `description`, `debut`, `fin`, `id_utilisateur`, `type activité`) VALUES ('$titre','$description','$debut','$fin', '$id' ,'$type')");
+            $queryInsert=mysqli_query($connect, "INSERT INTO `reservations`(`titre`, `description`, `debut`, `fin`, `id_utilisateur`, `type_activité`) VALUES ('$titre','$description','$debut','$fin', '$id' ,'$type')");
         }  
     }
  }
