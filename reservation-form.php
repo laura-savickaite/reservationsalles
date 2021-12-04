@@ -20,24 +20,34 @@ if(isset($_POST['reserver'])){
 
     $titre=$_POST['titre'];
     $description=$_POST['description'];
+    $type=$_POST['type'];
 
     //Pour transformer le mode d'input - format de date vers celui de sqli afin de permettre plus tard la comparaison entre les deux
         $debut=$_POST['debutdate'];
         $time = strtotime($debut);
     $newformatDebut = date("Y-m-d H:i:s",$time);
+    // Pour empêcher de s'inscrire le samedi et le dimanche 
+    $jourDebut = date('D',$time);
+    //pour empêcher de s'inscrire plus d'un jour
+    $jDebut = date('d',$time);
+    // pour vérifier l'heure par la suite - ne pas dépasser les 1h
+    $heureExt = explode(' ', $newformatDebut); 
+    $heureDebut = end($heureExt); 
+
 
         $fin=$_POST['findate'];
         $time1 = strtotime($fin);
     $newformatFin = date("Y-m-d H:i:s",$time1);
-
-    $type=$_POST['type'];
+    $jourFin = date('D',$time1);
+    $jFin = date('d',$time1);
+    $heureExt1 = explode(' ', $newformatFin); 
+    $heureFin = end($heureExt1);
 
     
 
-    // on va d'abord vérifier les erreurs possibles : champs vides, créneaux déjà réservés == validation false
+    // on va d'abord vérifier les erreurs possibles : champs vides, créneaux déjà réservés, plus d'une heure, plus d'un jour, jour de fin antérieur au jour de fin == validation false
     // si pas d'erreur alors tu me prends l'id de la session ET tu me rentres sa réservation
 
-    //il faut que la réservation ne puisse être de plus d'une heure si heure de fin - heure de début > 1 alors dire non vous pouvez pas
 
 
     if(empty($titre)){
@@ -67,6 +77,20 @@ if(isset($_POST['reserver'])){
             $validation = false;
             $timeErr = "La date de fin est antérieure à la date de début, on ne peut remonter dans le temps !";
             echo $timeErr;
+        }elseif (($jourDebut == "Sat" || $jourDebut == "Sun") || ($jourFin == "Sat" || $jourFin == "Sun")){
+            $validation=false;
+            $weekendErr = "Vous ne pouvez réserver la salle le week-end.";
+            echo $weekendErr;
+        }elseif($jFin-$jDebut>=1){
+            $validation=false;
+            $jourErr = "Vous ne pouvez réserver la salle que pour une heure le même jour.";
+            echo $jourErr;
+        }
+
+        if($heureFin - $heureDebut >"1:00"){
+            $validation = false;
+            $heureErr = "Vous ne pouvez réserver la salle plus d'une heure.";
+            echo $heureErr;
         }
 
     if ($validation){
