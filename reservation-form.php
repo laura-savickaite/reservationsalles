@@ -42,12 +42,10 @@ if(isset($_POST['reserver'])){
     $jFin = date('d',$time1);
     $heureExt1 = explode(' ', $newformatFin); 
     $heureFin = end($heureExt1);
-
-    
+ 
 
     // on va d'abord vérifier les erreurs possibles : champs vides, créneaux déjà réservés, plus d'une heure, plus d'un jour, jour de fin antérieur au jour de fin == validation false
     // si pas d'erreur alors tu me prends l'id de la session ET tu me rentres sa réservation
-
 
 
     if(empty($titre)){
