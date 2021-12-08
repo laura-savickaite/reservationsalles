@@ -3,3 +3,8 @@ body {
     padding : 0;
     background-color: white;
 }
+
+a {
+    outline: none;
+    text-decoration: none;
+}

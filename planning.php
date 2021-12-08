@@ -17,8 +17,6 @@ mysqli_set_charset($connect,"utf8");
 $queryPlanning = mysqli_query($connect, "SELECT utilisateurs.login, reservations.titre, reservations.debut, reservations.fin, reservations.type_activité  FROM `utilisateurs` INNER JOIN reservations ON id_utilisateur=utilisateurs.id");
 $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
 
-//  var_dump($fetchPlanning);
-
 
 //date("Y-m-d", strtotime("-1 week")) retourne la date d'il y a une semaine 
 //Si tu veux récupérer la semaine suivante, tu incrémente simplement la valeur du paramètre week de 1 dans ta fonction.
@@ -61,7 +59,7 @@ $nineteen = "19:00";
 function creneaux ($jour,$heureDeb,$heureFinale){
     $connect = mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
-    $queryPlanning = mysqli_query($connect, "SELECT utilisateurs.login, reservations.titre, reservations.debut, reservations.fin, reservations.type_activité  FROM `utilisateurs` INNER JOIN reservations ON id_utilisateur=utilisateurs.id");
+    $queryPlanning = mysqli_query($connect, "SELECT utilisateurs.login, reservations.titre, reservations.debut, reservations.fin, reservations.type_activité, reservations.id FROM `utilisateurs` INNER JOIN reservations ON id_utilisateur=utilisateurs.id");
     $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
     
     foreach ($fetchPlanning as $value){
@@ -79,25 +77,106 @@ function creneaux ($jour,$heureDeb,$heureFinale){
 
     if($jourDebut == $jour && ($heureDebut >= $heureDeb && $heureFin<=$heureFinale)){ 
 
-    echo '<td class = "'.$value['type_activité'].'">'. $value['titre'] . $value['type_activité'] .'</td>';
-}    
-    
+    echo '<td class = "'.$value['type_activité'].'"><a href=./reservation.php?val='.$value['id'].'>'. $value['titre'] . '<span class="tooltiptext">'.$value['login'].'</span>'.'</a></td>';
+
+}      
     if ($value['type_activité'] == "social"){ ?>
-        <style>.social  {background-color: #FFD3B4;}</style><?php;
+        <style>.social  {background-color: #FFD3B4;
+        }
+        .social .tooltiptext {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    padding: 5px 0;
+                    border-radius: 6px;
+                    position: absolute;
+                    z-index: 1;
+                    }
+
+        .social:hover .tooltiptext {
+            visibility: visible;
+                }
+        </style><?php;
     }elseif ($value['type_activité'] == "loisirs"){ ?>
-        <style>.loisirs  {background-color: #FFAAA7;}</style><?php ;
+        <style>.loisirs  {background-color: #FFAAA7;
+                        }
+                .loisirs .tooltiptext {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    padding: 5px 0;
+                    border-radius: 6px;
+                    position: absolute;
+                    z-index: 1;
+                    }
+
+                .loisirs:hover .tooltiptext {
+                    visibility: visible;
+                        }</style><?php ;
     }elseif ($value['type_activité'] == "scolaire"){ ?>
-        <style>.scolaire  {background-color: #98DDCA;}</style><?php ;
+        <style>.scolaire  {background-color: #98DDCA;
+        }
+        .scolaire .tooltiptext {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    padding: 5px 0;
+                    border-radius: 6px;
+                    position: absolute;
+                    z-index: 1;
+                    }
+
+        .scolaire:hover .tooltiptext {
+            visibility: visible;
+                }
+        </style><?php ;
     }elseif ($value['type_activité'] == "sport"){ ?>
-        <style>.sport  {background-color: #D5ECC2;}</style><?php;
+        <style>.sport  {background-color: #D5ECC2;
+        }
+        .sport .tooltiptext {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    padding: 5px 0;
+                    border-radius: 6px;
+                    position: absolute;
+                    z-index: 1;
+                    }
+
+        .sport:hover .tooltiptext {
+            visibility: visible;
+                }
+        </style><?php;
     }elseif ($value['type_activité'] == "festivites"){ ?>
-        <style>.festivites  {background-color: #F6DFEB;}</style><?php ;
+        <style>.festivites  {background-color: #F6DFEB;
+            }
+        .festivites .tooltiptext {
+                visibility: hidden;
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                padding: 5px 0;
+                border-radius: 6px;
+                position: absolute;
+                z-index: 1;
+                }
+
+        .festivites:hover .tooltiptext {
+            visibility: visible;
+                }  
+            </style><?php ;
     }
    }
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +201,8 @@ function creneaux ($jour,$heureDeb,$heureFinale){
         </tr>
     </thead>
     <tbody>
-    <?php foreach ($fetchPlanning as $value){
+    <?php 
+    foreach ($fetchPlanning as $value){
             $debut = $value['debut'];
             $fin = $value['fin'];
                 // echo $debut;
@@ -138,29 +218,29 @@ function creneaux ($jour,$heureDeb,$heureFinale){
                 ?>
                 <!-- il faut le mm nb de td que de colonne en haut pour que ça marche -->
         <tr><td><?php echo $eight ?></td>
-        <?php creneaux($monday, $eight,$nine); 
+        <td><?php creneaux($monday, $eight,$nine); 
          creneaux($tuesday, $eight,$nine); 
          creneaux($wednesday, $eight, $nine);
          creneaux($thursday, $eight, $nine);
          creneaux($friday, $eight, $nine);
          ?>
-        </tr>
+        </td></tr>
         <tr><td><?php echo $nine ?></td>
-        <?php creneaux($monday, $nine,$ten); 
+        <td><?php creneaux($monday, $nine,$ten); 
          creneaux($tuesday, $nine,$ten); 
          creneaux($wednesday, $nine, $ten);
          creneaux($thursday, $nine, $ten);
          creneaux($friday, $nine, $ten);
          ?>
-        </tr>
+        </td></tr>
         <tr><td><?php echo $ten ?></td>
-        <?php creneaux($monday, $ten,$eleven); 
+        <td><?php creneaux($monday, $ten,$eleven); 
          creneaux($tuesday, $ten,$eleven); 
          creneaux($wednesday, $ten, $eleven);
          creneaux($thursday, $ten, $eleven);
          creneaux($friday, $ten, $eleven);
          ?>
-        </tr>
+        </td></tr>
         <tr><td><?php echo $eleven ?></td>
         <?php creneaux($monday, $eleven,$twelve); 
          creneaux($tuesday, $eleven,$twelve); 
