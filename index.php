@@ -2,8 +2,9 @@
 
 session_start();
 
+$connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
-
+$login = $_SESSION['login'];
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,36 @@ session_start();
     <title>Index || UC</title>
 </head>
 <body>
+    <header>
+        <?php 
+        if(!isset($login)){ ?>
 
+        <section class="navbar">
+            <a href="inscription.php"><p>Sign in</p></a>
+            <a href="connexion.php"><p>Log in</p></a>
+            <a href="planning.php"><p>Planning</p></a>
+        </section>
+        <?php
+        }else { ?>
+        <section class="navbar">
+            <a id="rose" href="profil.php"><p>Mon profil</p></a>
+            <a id="bleu" href="planning.php"><p>Planning</p></a> 
+            <a id="jaune" href="reservation-form.php"><p>Add an event</p></a> 
+            <form action="deconnexion.php" method="post">
+                <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
+            </form>
+        </section>
+        <?php
+        }
+        
+        ?>
+    </header>
+    <main>
+        <span class = "titre"><h1 class="slideInLeft">BOOK</h1><p class="point">.</p><h1 class="fadeInDown">WITH</h1><p class="point1">.</p><h1 class ="fadeInRight">ME</h1></span>
+        <p id = "txtdescri">An experimental little agenda where everyone can plan their events. Book a room in order to arrange something and explore your potential. Check the schedule first, choose your ideal slot and book away! The others will be able to look into your event and maybe add themselves to it.</p>
+    </main>
+    <footer>
+        github
+    </footer>
 </body>
 </html>

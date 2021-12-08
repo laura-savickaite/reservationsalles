@@ -2,8 +2,6 @@
 
 session_start();
 
-var_dump($_SESSION);
-
 $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
 if (isset($_POST['connexion'])){

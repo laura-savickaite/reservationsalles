@@ -1,10 +1,207 @@
+/* SOMMAIRE */
+
+/* I. GENERAL */
+/* II. INDEX */
+
+
+/* I. GENERAL */
+
+@font-face {
+    font-family: Migra;
+    src: url(Fonts/Migra-Extralight.ttf);
+}
+
+@font-face {
+    font-family: GothicMedium;
+    src: url(Fonts/PPRightGothic-Medium.otf);
+}
+
+@font-face {
+    font-family: Restora;
+    src: url(Fonts/Nasir\ Udin\ -\ RestoraExtraLight.otf);
+}
+
+@font-face {
+    font-family: GothicLight;
+    src: url(Fonts/PPRightGothic-Light.otf);
+}
+
+@font-face {
+    font-family: GothicSpace;
+    src: url(Fonts/PPRightGothic-SpatialFine.otf);
+}
+
+@font-face {
+    font-family: Harmony;
+    src: url(Fonts/HARMONY\ Personal\ use.otf);
+}
+
+
 body {
     margin : 0;
     padding : 0;
-    background-color: white;
+    background-color: #faf5ea;
 }
 
 a {
     outline: none;
     text-decoration: none;
+    color: rgb(31, 30, 30);
+}
+
+/* II. INDEX */
+
+.titre {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-left: 19%;
+    margin-right: 19%;
+    margin-top: 20vh;
+}
+
+h1 {
+    font-family: Restora;
+    font-size: 7em;
+    color: rgb(32, 32, 32);
+}
+
+.slideInLeft {
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes slideInLeft {
+    0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    visibility: visible;
+    }
+    100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    }
+    }
+    @keyframes slideInLeft {
+    0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    visibility: visible;
+    }
+    100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    }
+    } 
+
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    animation-delay: 0.7s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInRight {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    }
+    @keyframes fadeInRight {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    }
+    
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInDown {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    }
+    @keyframes fadeInDown {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    } 
+
+.point {
+    font-size: 6em;
+    color: #D5ECC2;
+}
+
+.point1 {
+    font-size: 6em;
+    color: #EEC4C4;
+}
+
+#txtdescri {
+    text-align: justify;
+    width: 55vw;
+    font-family: GothicLight;
+    font-size: 1.3em;
+    line-height: 3.5vh;
+    margin-left: 22vw;
+    margin-top: -8vh;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.navbar a {
+    font-family: GothicMedium;
+    letter-spacing: 0.1vw;
+}
+#rose:hover {
+    box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #EEC4C4;
+}
+#bleu:hover {
+    box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #A6D6D6;
+}
+#jaune:hover {
+    box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #F6D7A7;
 }
