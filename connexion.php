@@ -40,22 +40,44 @@ if (isset($_POST['connexion'])){
     <title>Connexion || UC</title>
 </head>
 <body>
-    <form action="connexion.php" method="post">
+    <header>
+        <?php 
+        if(!isset($login)){ ?>
 
-        <label for="name">Login: </label>
-        <input type="text" name="login" id="loginn">
+        <section class="navbar">
+            <a href="inscription.php"><p>Sign in</p></a>
+            <a href="connexion.php"><p>Log in</p></a>
+            <a href="planning.php"><p>Planning</p></a>
+        </section>
+        <?php
+        }else { ?>
+        <section class="navbar">
+            <a id="rose" href="profil.php"><p>Mon profil</p></a>
+            <a id="bleu" href="planning.php"><p>Planning</p></a> 
+            <a id="jaune" href="reservation-form.php"><p>Add an event</p></a> 
+            <form action="deconnexion.php" method="post">
+                <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
+            </form>
+        </section>
+        <?php
+        }
+        
+        ?>
+    </header>
+    <main>
+        <form action="connexion.php" method="post">
 
-        <label for="name">Mot de passe: </label>
-        <input type="password" name="mdp" id="mdp">
+            <label for="name">Login: </label>
+            <input type="text" name="login" id="loginn">
+
+            <label for="name">Mot de passe: </label>
+            <input type="password" name="mdp" id="mdp">
 
 
 
-        <button type="submit" name="connexion">Log in</button>
+            <button type="submit" name="connexion">Log in</button>
 
-    </form>
-
-    <form action="deconnexion.php" method="post">
-            <button type="submit" name="deco">Deconnexion</button>
-    </form>
+        </form>
+    </main>
 </body>
 </html>

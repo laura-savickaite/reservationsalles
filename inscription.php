@@ -64,20 +64,46 @@ if(!empty($_POST)){
     <title>Inscription || UC</title>
 </head>
 <body>
-    <form action="inscription.php" method="post">
+  <header>
+        <?php 
+        if(!isset($login)){ ?>
 
-        <label for="name">Login: </label>
-        <input type="text" name="login" id="login">
+        <section class="navbar">
+            <a href="inscription.php"><p>Sign in</p></a>
+            <a href="connexion.php"><p>Log in</p></a>
+            <a href="planning.php"><p>Planning</p></a>
+        </section>
+        <?php
+        }else { ?>
+        <section class="navbar">
+            <a id="rose" href="profil.php"><p>Mon profil</p></a>
+            <a id="bleu" href="planning.php"><p>Planning</p></a> 
+            <a id="jaune" href="reservation-form.php"><p>Add an event</p></a> 
+            <form action="deconnexion.php" method="post">
+                <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
+            </form>
+        </section>
+        <?php
+        }
+        
+        ?>
+    </header>
+    <main>
+        <form action="inscription.php" method="post">
 
-        <label for="name">Mot de passe: </label>
-        <input type="password" name="mdp" id="mdp">
+            <label for="name">Login: </label>
+            <input type="text" name="login" id="login">
 
-        <label for="name">Confirmation mot de passe: </label>
-        <input type="password" name="confmdp" id="confmdp">
+            <label for="name">Mot de passe: </label>
+            <input type="password" name="mdp" id="mdp">
+
+            <label for="name">Confirmation mot de passe: </label>
+            <input type="password" name="confmdp" id="confmdp">
 
 
-        <button type="submit" name="inscription">Sign in</button>
+            <button type="submit" name="inscription">Sign in</button>
 
-    </form>
+        </form>
+    </main>
 </body>
 </html>
