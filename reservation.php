@@ -45,8 +45,9 @@ if(!isset($_SESSION['login'])){
         <?php
         }else { ?>
         <section class="navbar">
-            <a id="rose" href="profil.php"><p>Mon profil</p></a>
-            <a id="bleu" href="planning.php"><p>Planning</p></a> 
+            <a id="rose" href="index.php"><p>Index</p></a>
+            <a id="bleu" href="profil.php"><p>Mon profil</p></a> 
+            <a id="violet" href="planning.php"><p>Planning</p></a>
             <a id="jaune" href="reservation-form.php"><p>Add an event</p></a> 
             <form action="deconnexion.php" method="post">
                 <button class="boutondeco" type="submit" name="deco">Deconnexion</button>

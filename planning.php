@@ -84,8 +84,8 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
         <?php
         }else { ?>
         <section class="navbar">
-            <a id="rose" href="profil.php"><p>Mon profil</p></a>
-            <a id="bleu" href="planning.php"><p>Planning</p></a> 
+            <a id="rose" href="index.php"><p>Index</p></a>
+            <a id="bleu" href="profil.php"><p>Mon profil</p></a> 
             <a id="jaune" href="reservation-form.php"><p>Add an event</p></a> 
             <form action="deconnexion.php" method="post">
                 <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
@@ -131,19 +131,21 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
 
                             foreach ($fetchPlanning as $value){
                             $debut = $value['debut'];
-                            $fin = $value['fin'];
                             $time = strtotime($debut);
-                            $time1 = strtotime($fin);
                             $jourDebut = date("l d-m-y",$time);
                             $heureDebut = date("H:00",$time);
-                            $heureFin = date("H:00",$time);
 
                         //  echo $heureDebut;
                         //  echo $jourDebut;
                             if(($jourDebut == $week[$j]) && ($heureDebut == $horaire[$i])) {
-                                echo '<div class = "'.$value['type_activité'].'"><a href=./reservation.php?val='.$value['id'].'>'. $value['titre'] . '<span class="tooltiptext">'.$value['login'].'</span>'.'</a></div>';
-
-                                if ($value['type_activité'] == "social"){ ?>
+                                echo '<div class = "'.$value['type_activité'].'"><a href=./reservation.php?val='.$value['id'].'><span id="font">'. $value['titre'] . '</span><span class="tooltiptext">'.$value['login'].'</span>'.'</a></div>';?>
+                                <style>
+                                    #font {
+                                        font-family: 'Courier New', Courier, monospace;
+                                    }
+                                </style>
+                                <?php
+                                if ($value['type_activité'] == "social"){?> 
                                     <style>.social  {background-color: #FFD3B4;
                                     }
                                     .social .tooltiptext {

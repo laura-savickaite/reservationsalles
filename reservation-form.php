@@ -114,6 +114,31 @@ if(isset($_POST['reserver'])){
     <title>Réservation form || UC</title>
 </head>
 <body>
+<header>
+        <?php 
+        if(!isset($login)){ ?>
+
+        <section class="navbar">
+            <a href="inscription.php"><p>Sign in</p></a>
+            <a href="connexion.php"><p>Log in</p></a>
+            <a href="planning.php"><p>Planning</p></a>
+        </section>
+        <?php
+        }else { ?>
+        <section class="navbar">
+            <a id="rose" href="index.php"><p>Index</p></a>
+            <a id="bleu" href="profil.php"><p>Mon profil</p></a> 
+            <a id="jaune" href="planning.php"><p>Planning</p></a> 
+            <form action="deconnexion.php" method="post">
+                <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
+            </form>
+        </section>
+        <?php
+        }
+        
+        ?>
+    </header>
+
     <form action="reservation-form.php" method="post">
 
             <label for="activités">Type d'activité:</label>

@@ -44,6 +44,7 @@ body {
     margin : 0;
     padding : 0;
     background-color: #faf5ea;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 a {
@@ -58,6 +59,7 @@ a {
     justify-content: space-evenly;
 }
 .navbar a {
+    margin-top: 3vh;
     font-family: GothicMedium;
     letter-spacing: 0.1vw;
 }
@@ -66,6 +68,9 @@ a {
 }
 #bleu:hover {
     box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #A6D6D6;
+}
+#violet:hover {
+    box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #F0D9FF;
 }
 #jaune:hover {
     box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #F6D7A7;
@@ -78,7 +83,7 @@ button {
     font-size: 1em;
     letter-spacing: 0.1vw;
     cursor: pointer;
-    margin-top: 2vh;
+    margin-top: 5vh;
 }
 button:hover {
     padding-bottom: 1.6vh;
@@ -235,7 +240,7 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
 th {
     text-align: center;
@@ -250,7 +255,7 @@ td {
   }
 
 table {
-    height: 90vh;
+    height: 85vh;
     width: 70vw;
 }
 
