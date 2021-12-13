@@ -5,7 +5,6 @@ début, date de fin. -->
 
 session_start();
 
-
 $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
 $login = $_SESSION['login'];  
@@ -138,32 +137,41 @@ if(isset($_POST['reserver'])){
         
         ?>
     </header>
+    <main>
+        <form action="reservation-form.php" method="post">
+            <div id="saveslot">
+                <div class="label">
+                    <label for="activités">Type d'activité:</label>
+                    <select id="activites" name="type">
+                        <option value="loisirs">Loisirs</option>
+                        <option value="scolaire">Scolaire</option>
+                        <option value="social">Social</option>
+                        <option value="festivite">Festivités</option>
+                    </select>
+                </div>
+                <div class="label">
+                    <label for="name">Titre: </label>
+                    <input type="text" name="titre" id="titre">
+                </div>
+                <div class="label">
+                    <label for="name">Description: </label>
+                    <textarea name="description" id="description"></textarea>
+                </div>
+                <div class="label">
+                    <label for="name">Date de début: </label>
+                    <input type="datetime-local" name="debutdate" id="debutdate" required>
+                </div>
+                <div class="label">
+                    <label for="name">Date de fin: </label>
+                    <input type="datetime-local" name="findate" id="findate" required>
+                </div>
+           
+            </div> 
+            <div id="save">
+                <button type="submit" name="reserver">Réserver</button>
+            </div>
 
-    <form action="reservation-form.php" method="post">
-
-            <label for="activités">Type d'activité:</label>
-            <select id="activites" name="type">
-                <option value="loisirs">Loisirs</option>
-                <option value="scolaire">Scolaire</option>
-                <option value="social">Social</option>
-                <option value="festivite">Festivités</option>
-            </select>
-
-            <label for="name">Titre: </label>
-            <input type="text" name="titre" id="titre">
-
-            <label for="name">Description: </label>
-            <textarea name="description" id="description"></textarea>
-
-            <label for="name">Date de début: </label>
-            <input type="datetime-local" name="debutdate" id="debutdate" required>
-
-            <label for="name">Date de fin: </label>
-            <input type="datetime-local" name="findate" id="findate" required>
-
-
-        <button type="submit" name="reserver">Réserver</button>
-
-    </form>
+        </form>
+    </main>
 </body>
 </html>

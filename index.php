@@ -43,7 +43,7 @@ $login = $_SESSION['login'];
     </header>
     <main>
         <span class = "titre"><h1 class="slideInLeft">BOOK</h1><p class="point">.</p><h1 class="fadeInDown">WITH</h1><p class="point1">.</p><h1 class ="fadeInRight">ME</h1></span>
-        <p id = "txtdescri">An experimental little agenda where everyone can plan their events. Book a room in order to arrange something and explore your potential. Check the schedule first, choose your ideal slot and book away! The others will be able to look into your event and maybe add themselves to it.</p>
+        <p id = "txtdescri">An experimental little planner where everyone can plan their events. Book a room in order to arrange something and explore your potential. Check the schedule first, choose your ideal slot and book away! The others will be able to look into your event and maybe add themselves to it.</p>
     </main>
     <footer>
         github

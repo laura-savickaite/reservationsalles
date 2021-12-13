@@ -3,6 +3,8 @@
 /* I. GENERAL */
 /* II. INDEX */
 /* III. PLANNING */
+/* IV. ADD AN EVENT */
+/* V. INSCRIPTION */
 
 
 
@@ -90,7 +92,26 @@ button:hover {
     box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #CEE5D0;
 }
 
+label {
+    font-family: GothicLight;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+select {
+    font-family: Harmony;
+    margin-top: 1vh;
+}
 
+textarea {
+    resize: none;
+    margin-top: 1vh;
+}
+
+input {
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 1vh;
+}
 
 
 /* II. INDEX */
@@ -323,3 +344,30 @@ h3 {
     background-color: #F6DFEB;
     margin-top: 2vh;
 }
+
+
+/* IV. ADD AN EVENT */
+
+#saveslot {
+    display: flex;
+    flex-direction: column;
+    width: 17vw;
+    margin-top: 5vh;
+    margin-left: 37vw;
+    background-color: #FDFAF6;
+    padding: 5%;
+    border-radius: 4%;
+    border: dashed #F6D7A7;
+}
+
+.label {
+    margin-top: 4vh;
+    text-align: center;
+}
+
+#save {
+    text-align: center;
+}
+
+/* V. INSCRIPTION */
+

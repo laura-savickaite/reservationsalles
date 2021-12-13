@@ -151,11 +151,11 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                     .social .tooltiptext {
                                                 visibility: hidden;
                                                 width: 120px;
-                                                background-color: black;
-                                                color: #fff;
+                                                background-color: #5D534A;
+                                                color: #FDFAF6;
                                                 text-align: center;
                                                 padding: 5px 0;
-                                                border-radius: 6px;
+                                                border-radius: 3px;
                                                 position: absolute;
                                                 z-index: 1;
                                                 }
@@ -170,11 +170,11 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                             .loisirs .tooltiptext {
                                                 visibility: hidden;
                                                 width: 120px;
-                                                background-color: black;
-                                                color: #fff;
+                                                background-color: #5D534A;
+                                                color: #FDFAF6;
                                                 text-align: center;
                                                 padding: 5px 0;
-                                                border-radius: 6px;
+                                                border-radius: 3px;
                                                 position: absolute;
                                                 z-index: 1;
                                                 }
@@ -188,11 +188,11 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                     .scolaire .tooltiptext {
                                                 visibility: hidden;
                                                 width: 120px;
-                                                background-color: black;
-                                                color: #fff;
+                                                background-color: #5D534A;
+                                                color: #FDFAF6;
                                                 text-align: center;
                                                 padding: 5px 0;
-                                                border-radius: 6px;
+                                                border-radius: 3px;
                                                 position: absolute;
                                                 z-index: 1;
                                                 }
@@ -207,11 +207,11 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                     .sport .tooltiptext {
                                                 visibility: hidden;
                                                 width: 120px;
-                                                background-color: black;
-                                                color: #fff;
+                                                background-color: #5D534A;
+                                                color: #FDFAF6;
                                                 text-align: center;
                                                 padding: 5px 0;
-                                                border-radius: 6px;
+                                                border-radius: 3px;
                                                 position: absolute;
                                                 z-index: 1;
                                                 }
@@ -225,12 +225,12 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                         }
                                     .festivites .tooltiptext {
                                             visibility: hidden;
-                                            width: 120px;
-                                            background-color: black;
-                                            color: #fff;
+                                            width: 100px;
+                                            background-color: #5D534A;
+                                            color: #FDFAF6;
                                             text-align: center;
                                             padding: 5px 0;
-                                            border-radius: 6px;
+                                            border-radius: 3px;
                                             position: absolute;
                                             z-index: 1;
                                             }
