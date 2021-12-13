@@ -138,40 +138,54 @@ if(isset($_POST['reserver'])){
         ?>
     </header>
     <main>
-        <form action="reservation-form.php" method="post">
-            <div id="saveslot">
-                <div class="label">
-                    <label for="activités">Type d'activité:</label>
-                    <select id="activites" name="type">
-                        <option value="loisirs">Loisirs</option>
-                        <option value="scolaire">Scolaire</option>
-                        <option value="social">Social</option>
-                        <option value="festivite">Festivités</option>
-                    </select>
-                </div>
-                <div class="label">
-                    <label for="name">Titre: </label>
-                    <input type="text" name="titre" id="titre">
-                </div>
-                <div class="label">
-                    <label for="name">Description: </label>
-                    <textarea name="description" id="description"></textarea>
-                </div>
-                <div class="label">
-                    <label for="name">Date de début: </label>
-                    <input type="datetime-local" name="debutdate" id="debutdate" required>
-                </div>
-                <div class="label">
-                    <label for="name">Date de fin: </label>
-                    <input type="datetime-local" name="findate" id="findate" required>
-                </div>
-           
-            </div> 
-            <div id="save">
-                <button type="submit" name="reserver">Réserver</button>
-            </div>
+        <article id="reservation">
+            <section>
+                <form action="reservation-form.php" method="post">
+                    <div id="saveslot">
+                        <div class="label">
+                            <label for="activités">Type d'activité:</label>
+                            <select id="activites" name="type">
+                                <option value="loisirs">Loisirs</option>
+                                <option value="scolaire">Scolaire</option>
+                                <option value="social">Social</option>
+                                <option value="festivite">Festivités</option>
+                            </select>
+                        </div>
+                        <div class="label">
+                            <label for="name">Titre: </label>
+                            <input type="text" name="titre" id="titre">
+                        </div>
+                        <div class="label">
+                            <label for="name">Description: </label>
+                            <textarea name="description" id="description"></textarea>
+                        </div>
+                        <div class="label">
+                            <label for="name">Date de début: </label>
+                            <input type="datetime-local" name="debutdate" id="debutdate" required>
+                        </div>
+                        <div class="label">
+                            <label for="name">Date de fin: </label>
+                            <input type="datetime-local" name="findate" id="findate" required>
+                        </div>
+                
+                    </div> 
+                    <div id="save">
+                        <button type="submit" name="reserver">Réserver</button>
+                    </div>
+                </form>
+        </section>
 
-        </form>
+        <section id="explications">
+        <div id="explitxt">
+            <ul>
+                <li>Avant de réserver, veuillez vérifier le planning.</li>
+                <li>Faites attention aux dates, la date de fin ne doit pas être antérieure à celle du début.</li>
+                <li>Vous ne pouvez réserver qu'une heure par séance.</li>
+                <li>Les séances sont des heures rondes (ex: 8:00, 9:00 etc...) même si vous réservez à la demie. </li>
+            </ul>
+        </div>
+        </section>
+    </article>
     </main>
 </body>
 </html>

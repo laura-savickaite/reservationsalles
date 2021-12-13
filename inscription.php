@@ -2,7 +2,6 @@
  
 $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
-var_dump($_SESSION);
 
 if(!empty($_POST)){
     extract($_POST);
@@ -89,21 +88,24 @@ if(!empty($_POST)){
         ?>
     </header>
     <main>
+      <div id="form">
         <form action="inscription.php" method="post">
-
+          <div class="signin">
             <label for="name">Login: </label>
-            <input type="text" name="login" id="login">
-
+            <div class="inputsign"><input type="text" name="login" id="login"></div>
+          </div>
+          <div class="signin">
             <label for="name">Mot de passe: </label>
-            <input type="password" name="mdp" id="mdp">
-
+            <div class="inputsign"><input type="password" name="mdp" id="mdp"></div>
+          </div>
+          <div class="signin">
             <label for="name">Confirmation mot de passe: </label>
-            <input type="password" name="confmdp" id="confmdp">
-
-
-            <button type="submit" name="inscription">Sign in</button>
-
+            <div class="inputsign"><input type="password" name="confmdp" id="confmdp"></div>
+          </div>
+      </div>
+            <div id="inscrire"><button type="submit" name="inscription">Sign in</button></div>
         </form>
+      
     </main>
 </body>
 </html>

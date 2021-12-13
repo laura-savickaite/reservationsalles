@@ -5,6 +5,7 @@
 /* III. PLANNING */
 /* IV. ADD AN EVENT */
 /* V. INSCRIPTION */
+/* VI. CONNEXION */
 
 
 
@@ -348,14 +349,20 @@ h3 {
 
 /* IV. ADD AN EVENT */
 
+#reservation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 #saveslot {
     display: flex;
     flex-direction: column;
     width: 17vw;
-    margin-top: 5vh;
-    margin-left: 37vw;
+    margin-top: 10vh;
+    margin-left: 20vw;
     background-color: #FDFAF6;
-    padding: 5%;
+    padding: 7%;
     border-radius: 4%;
     border: dashed #F6D7A7;
 }
@@ -367,7 +374,51 @@ h3 {
 
 #save {
     text-align: center;
+    margin-left: 25vw;
+}
+
+#explications {
+    width: 20vw;
+    height: 32vh;
+    background-color: #FDFAF6;
+    border-radius: 4%;
+    margin-top: 20vh;
+    border: dashed #A6D6D6;
+    margin-right: 13vw;
+    padding: 1%;
+    
+}
+
+li {
+    margin-top: 1vh;
+    font-size: 0.9em;
 }
 
 /* V. INSCRIPTION */
+
+#form {
+    display: flex;
+    flex-direction: column;
+    width: 17vw;
+    margin-top: 10vh;
+    margin-left: 35vw;
+    background-color: #FDFAF6;
+    padding: 8%;
+    border-radius: 4%;
+    border: dashed #EEC4C4;
+}
+
+.signin {
+    margin-top: 2vh;
+}
+
+.inputsign {
+    margin-left: 2.5vw;
+}
+
+#inscrire {
+    text-align: center;
+}
+
+/* VI. CONNEXION */
 
