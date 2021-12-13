@@ -14,6 +14,13 @@ if (isset($_POST['connexion'])){
 
     $requestLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login. "'"); 
 
+        //ces informations récoltées sont utilisées dans profil.php
+        $repTest = mysqli_query($connect, "SELECT * FROM `utilisateurs` WHERE `login`= '".$login."'");
+        $rTest = mysqli_fetch_all($repTest,MYSQLI_ASSOC);
+        foreach ($rTest as $value){    
+        $_SESSION['imgprofil']=$value ['imgprofil'];
+        }
+
     if(mysqli_num_rows($requestLogin)){
     $requestPassword = mysqli_query($connect, "SELECT `password` FROM `utilisateurs` WHERE `password`= '".$mdp. "'"); 
 
@@ -41,28 +48,11 @@ if (isset($_POST['connexion'])){
 </head>
 <body>
     <header>
-        <?php 
-        if(!isset($login)){ ?>
-
         <section class="navbar">
             <a href="inscription.php"><p>Sign in</p></a>
             <a href="connexion.php"><p>Log in</p></a>
             <a href="planning.php"><p>Planning</p></a>
         </section>
-        <?php
-        }else { ?>
-        <section class="navbar">
-            <a id="rose" href="profil.php"><p>Mon profil</p></a>
-            <a id="bleu" href="planning.php"><p>Planning</p></a> 
-            <a id="jaune" href="reservation-form.php"><p>Add an event</p></a> 
-            <form action="deconnexion.php" method="post">
-                <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
-            </form>
-        </section>
-        <?php
-        }
-        
-        ?>
     </header>
     <main>
         <div class="form">

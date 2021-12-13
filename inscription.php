@@ -22,31 +22,31 @@ if(!empty($_POST)){
 
     if (empty($login)) {
       $validation=false;
-      $loginErr .= "Ce champ est requis.";
+      @$loginErr .= "Ce champ est requis.";
     }
     else {
         
       $requestLogin = mysqli_query($connect, "SELECT `login` FROM `utilisateurs` WHERE `login`= '".$login. "'"); 
         if(mysqli_num_rows($requestLogin)){
           $validation=false;
-          $loginErr .= "Ce nom d'utilisateur est déjà pris.";
+          @$loginErr .= "Ce nom d'utilisateur est déjà pris.";
       }
     }
 
     
     if(empty($password)){
       $validation=false;
-      $passwordErr .= "Ce champ est requis";
+      @$passwordErr .= "Ce champ est requis";
     }
     elseif ($confpassword !== $password) {
       $validation=false;
-      $confpasswordErr .= "La confirmation ne correspond pas au mot de passe.";
+      @$confpasswordErr .= "La confirmation ne correspond pas au mot de passe.";
     } 
-    
     
   if ($validation){
   
     $requestInsert = mysqli_query($connect, "INSERT INTO `utilisateurs` (login, password) VALUES ('$login', '$password')"); 
+    header('Location:connexion.php');
   }
   }
 
@@ -64,28 +64,11 @@ if(!empty($_POST)){
 </head>
 <body>
   <header>
-        <?php 
-        if(!isset($login)){ ?>
-
         <section class="navbar">
             <a href="inscription.php"><p>Sign in</p></a>
             <a href="connexion.php"><p>Log in</p></a>
             <a href="planning.php"><p>Planning</p></a>
         </section>
-        <?php
-        }else { ?>
-        <section class="navbar">
-            <a id="rose" href="profil.php"><p>Mon profil</p></a>
-            <a id="bleu" href="planning.php"><p>Planning</p></a> 
-            <a id="jaune" href="reservation-form.php"><p>Add an event</p></a> 
-            <form action="deconnexion.php" method="post">
-                <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
-            </form>
-        </section>
-        <?php
-        }
-        
-        ?>
     </header>
     <main>
       <div class="form">
