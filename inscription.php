@@ -88,7 +88,7 @@ if(!empty($_POST)){
         ?>
     </header>
     <main>
-      <div id="form">
+      <div class="form">
         <form action="inscription.php" method="post">
           <div class="signin">
             <label for="name">Login: </label>

@@ -177,7 +177,7 @@ if(isset($_POST['reserver'])){
 
         <section id="explications">
         <div id="explitxt">
-            <ul>
+            <ul class="fadeIn">
                 <li>Avant de réserver, veuillez vérifier le planning.</li>
                 <li>Faites attention aux dates, la date de fin ne doit pas être antérieure à celle du début.</li>
                 <li>Vous ne pouvez réserver qu'une heure par séance.</li>

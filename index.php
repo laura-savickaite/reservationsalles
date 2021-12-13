@@ -4,7 +4,7 @@ session_start();
 
 $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
 
-$login = $_SESSION['login'];
+@$login = $_SESSION['login'];
 ?>
 
 <!DOCTYPE html>

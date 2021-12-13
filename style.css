@@ -114,6 +114,23 @@ input {
     margin-top: 1vh;
 }
 
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+
 
 /* II. INDEX */
 
@@ -386,8 +403,11 @@ h3 {
     border: dashed #A6D6D6;
     margin-right: 13vw;
     padding: 1%;
+    box-shadow:  15px 15px 30px #c3c3c3;
     
 }
+
+
 
 li {
     margin-top: 1vh;
@@ -396,16 +416,17 @@ li {
 
 /* V. INSCRIPTION */
 
-#form {
+.form {
     display: flex;
     flex-direction: column;
     width: 17vw;
-    margin-top: 10vh;
+    margin-top: 20vh;
     margin-left: 35vw;
     background-color: #FDFAF6;
     padding: 8%;
     border-radius: 4%;
     border: dashed #EEC4C4;
+    box-shadow:  15px 15px 30px #c3c3c3;
 }
 
 .signin {
@@ -418,7 +439,20 @@ li {
 
 #inscrire {
     text-align: center;
+    margin-left: 2vw;
 }
 
 /* VI. CONNEXION */
 
+.login {
+    margin-top: 2vh;
+}
+
+.inputlog {
+    margin-left: 2vw;
+}
+
+#connexion {
+    text-align: center;
+    margin-left: 2vw;
+}

@@ -19,7 +19,7 @@ if (isset($_POST['connexion'])){
 
         if(mysqli_num_rows($requestPassword)){
             $_SESSION['login']=$login;
-            // header('Location:index.php');
+            header('Location:index.php');
     }else {
         $logErr="Le mot de passe ou le login ne correspondent pas.";
     }
@@ -65,17 +65,21 @@ if (isset($_POST['connexion'])){
         ?>
     </header>
     <main>
-        <form action="connexion.php" method="post">
+        <div class="form">
+            
+            <form action="connexion.php" method="post">
+                <div class="login">
+                    <label for="name">Login: </label>
+                    <div class="inputlog"><input type="text" name="login" id="loginn"></div>
+                </div>
+                
+               <div class="login">
+                    <label for="name">Mot de passe: </label>
+                    <div class="inputlog"><input type="password" name="mdp" id="mdp"></div>    
+                </div>
+        </div>
 
-            <label for="name">Login: </label>
-            <input type="text" name="login" id="loginn">
-
-            <label for="name">Mot de passe: </label>
-            <input type="password" name="mdp" id="mdp">
-
-
-
-            <button type="submit" name="connexion">Log in</button>
+            <div id="connexion"><button type="submit" name="connexion">Log in</button></div>
 
         </form>
     </main>
