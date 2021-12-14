@@ -14,25 +14,18 @@ if(!isset($_SESSION['login'])){
     header('Location:index.php');
 }else {
 
-    $queryReservation = mysqli_query($connect, "SELECT utilisateurs.login, utilisateurs.imgprofil, reservations.id, reservations.titre, reservations.debut, reservations.fin, reservations.type_activité, reservations.description, reservations.participants  FROM `utilisateurs` INNER JOIN reservations ON id_utilisateur=utilisateurs.id WHERE reservations.id = '".$_GET['val']."'");
+    $queryReservation = mysqli_query($connect, "SELECT utilisateurs.login, utilisateurs.imgprofil, reservations.id, reservations.titre, reservations.debut, reservations.fin, reservations.type_activité, reservations.description, reservations.participants  FROM `utilisateurs` INNER JOIN reservations ON id_utilisateur=utilisateurs.id WHERE reservations.id = '".@$_GET['val']."'");
     $fetchReservation = mysqli_fetch_assoc($queryReservation);
-    var_dump($fetchReservation);
+
+    @$debut = $fetchReservation['debut'];
+    @$fin = $fetchReservation['fin'];
+    @$deb = strtotime($debut);
+    @$fi = strtotime($fin);
+    $jDebut = date("l d-m-y",$deb);
+    $hDebut = date("H:00",$deb);
+    $hFin = date("H:00",$fi);
 }
 
-
-// S'ajouter à la liste des participants
-if (isset($_POST['addurself'])){
-
-    if($_SESSION['login']=$fetchReservation['login']) {
-        @$loginEx = "Eh mais vous êtes le créateur, non ?";
-        $queryLogin = mysqli_query($connect, "SELECT `participants` FROM `utilisateurs` WHERE `participants`= '".$fetchReservation['login']. "'"); 
-        if(mysqli_num_rows($queryLogin)){
-          @$partPre .= "Mais, il semblerait que vous participiez déjà.";
-        }else {
-              $queryAdd = mysqli_query($connect, "UPDATE `utilisateurs` SET `participants`='".$_SESSION['login']."' WHERE `id`= '".$fetchReservation['id']."'");  
-        }
-    }
-}
 
 
 ?>
@@ -59,148 +52,157 @@ if (isset($_POST['addurself'])){
         </section>
     </header>
     <main>
-    <article id="bgbooks">
-    <!-- HOVER EN COULEUR ADEQUATE -->
-        <?php
-        if ($fetchReservation['type_activité'] == "social"){?> 
-            <style>.social  {background-color: #FFD3B4;
-            }
-            .social .tooltiptext {
-                        visibility: hidden;
-                        width: 120px;
-                        background-color: #5D534A;
-                        color: #FDFAF6;
-                        text-align: center;
-                        padding: 5px 0;
-                        border-radius: 3px;
-                        position: absolute;
-                        z-index: 1;
-                        }
-    
-            .social:hover .tooltiptext {
-                visibility: visible;
-                    }
-            </style><?php;
-        }elseif ($value['type_activité'] == "loisirs"){ ?>
-            <style>.loisirs  {background-color: #FFAAA7;
+        <article id="booksinfo">
+                <h2><?php echo strtoupper($fetchReservation['titre']); ?></h2>
+                <!-- Hover en couleur selon le type d'activité -->
+                <?php if (@$fetchReservation['type_activité'] == "social"){?> 
+                    <style>
+                            h2::before {  
+                            transform: scaleX(0);
+                            transform-origin: bottom right;
                             }
-                    .loisirs .tooltiptext {
-                        visibility: hidden;
-                        width: 120px;
-                        background-color: #5D534A;
-                        color: #FDFAF6;
-                        text-align: center;
-                        padding: 5px 0;
-                        border-radius: 3px;
-                        position: absolute;
-                        z-index: 1;
-                        }
-    
-                    .loisirs:hover .tooltiptext {
-                        visibility: visible;
-                            }</style><?php ;
-        }elseif ($fetchReservation['type_activité'] == "scolaire"){ ?>
-            <style>.scolaire  {background-color: #98DDCA;
-            }
-            .scolaire .tooltiptext {
-                        visibility: hidden;
-                        width: 120px;
-                        background-color: #5D534A;
-                        color: #FDFAF6;
-                        text-align: center;
-                        padding: 5px 0;
-                        border-radius: 3px;
-                        position: absolute;
-                        z-index: 1;
-                        }
-    
-            .scolaire:hover .tooltiptext {
-                visibility: visible;
-                    }
-            </style><?php ;
-        }elseif ($fetchReservation['type_activité'] == "sport"){ ?>
-            <style>.sport  {background-color: #D5ECC2;
-            }
-            .sport .tooltiptext {
-                        visibility: hidden;
-                        width: 120px;
-                        background-color: #5D534A;
-                        color: #FDFAF6;
-                        text-align: center;
-                        padding: 5px 0;
-                        border-radius: 3px;
-                        position: absolute;
-                        z-index: 1;
-                        }
-    
-            .sport:hover .tooltiptext {
-                visibility: visible;
-                    }
-            </style><?php;
-        }elseif ($fetchReservation['type_activité'] == "festivites"){ ?>
-            <style>.festivites  {background-color: #F6DFEB;
-                }
-            .festivites .tooltiptext {
-                    visibility: hidden;
-                    width: 100px;
-                    background-color: #5D534A;
-                    color: #FDFAF6;
-                    text-align: center;
-                    padding: 5px 0;
-                    border-radius: 3px;
-                    position: absolute;
-                    z-index: 1;
-                    }
-    
-            .festivites:hover .tooltiptext {
-                visibility: visible;
-                    }  
-                </style><?php ;
-                }
-            ?>
-
+          
+                            h2:hover::before {
+                            transform: scaleX(1);
+                            transform-origin: bottom left;
+                            }
+          
+                            h2::before {
+                            content: " ";
+                            display: block;
+                            position: absolute;
+                            top: 0; right: 0; bottom: 0; left: 0;
+                            inset: 0 0 0 0;
+                            background: #FFD3B4;
+                            z-index: -1;
+                            transition: transform .3s ease;
+                                }
+                    </style><?php;
+                }elseif (@$fetchReservation['type_activité'] == "loisirs"){ ?>
+                     <style>
+                            .social::before {  
+                            transform: scaleX(0);
+                            transform-origin: bottom right;
+                            }
+          
+                            .social:hover::before {
+                            transform: scaleX(1);
+                            transform-origin: bottom left;
+                            }
+          
+                            .social::before {
+                            content: " ";
+                            display: block;
+                            position: absolute;
+                            top: 0; right: 0; bottom: 0; left: 0;
+                            inset: 0 0 0 0;
+                            background: #FFAAA7;
+                            z-index: -1;
+                            transition: transform .3s ease;
+                                }
+                    </style><?php ;
+                }elseif (@$fetchReservation['type_activité'] == "scolaire"){ ?>
+                    <style>
+                            h2::before {  
+                            transform: scaleX(0);
+                            transform-origin: bottom right;
+                            }
+          
+                            h2:hover::before {
+                            transform: scaleX(1);
+                            transform-origin: bottom left;
+                            }
         
+                            h2::before {
+                            content: " ";
+                            display: block;
+                            position: absolute;
+                            top: 0; right: 0; bottom: 0; left: 0;
+                            inset: 0 0 0 0;
+                            background-color: #98DDCA;
+                            z-index: -1;
+                            transition: transform .3s ease;
+                                }
+                    </style><?php ;
+                }elseif (@$fetchReservation['type_activité'] == "sport"){ ?>
+                    <style>
+                    h2:before {  
+                    transform: scaleX(0);
+                    transform-origin: bottom right;
+                    }
+          
+                    h2:hover:before {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                    }
 
+                    h2:before {
+                    content: " ";
+                    display: block;
+                    position: absolute;
+                    inset: 0 0 0 0;
+                    background-color: #D5ECC2;
+                    z-index: -1;
+                    transition: transform .3s ease;
+                        }
+                    </style><?php;
+                }elseif (@$fetchReservation['type_activité'] == "festivites"){ ?>
+                    <style>
+                    h2:before {  
+                    transform: scaleX(0);
+                    transform-origin: bottom right;
+                    }
+          
+                    h2:hover:before {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                    }
 
+                    h2:before {
+                    content: " ";
+                    display: block;
+                    position: absolute;
+                    inset: 0 0 0 0;
+                    background-color: #F6DFEB;
+                    z-index: -1;
+                    transition: transform .3s ease;
+                        }
+                        </style><?php ;
+                        }        
+                ?>
+            <div id="eventby">inscrit par <?php echo @$fetchReservation['login']; ?>             
+            <span id="imgreservation">
+            <?php if(@!$fetchReservation['imgprofil']){ ?>
+                  <img class="imgprofil" src="Uploads/default.png" alt="Profile picture" class='profil' width="50px" height="50px">   
+            <?php }else {
+              ?>
+                <img class="imgprofil" src="Uploads/<?php echo $fetchReservation['imgprofil']; ?>" alt="Profile picture" class='profil' width="50px" height="50px">
+          <?php } ?>
+            </span>
+            </div>
 
-
-
-
-
-        <section id="booksinfo">
-            <h2><div class = <?php echo $value['type_activité']?>><?php echo $fetchReservation['titre']; ?></div></h2>
-            <span>inscrit par <?php echo $fetchReservation['login']; ?> <img class="imgprofil" src="Uploads/<?php echo $fetchReservation['imgprofil']; ?>" alt="Profile picture" class='profil' width="50px" height="50px"></span>
-
-            <div>
+            <div id="eventdescri">
                 <h3>Description de l'event</h3>
                 <?php echo $fetchReservation['description']; ?>
             </div>
 
-            <div>
-                <div>
-                    <p>Du</p>
-                    <?php echo $fetchReservation['debut']; ?>
+                <div id="jour">
+                    <p>Le</p>
+                    <div id="echo"><p><?php echo $jDebut;?></p></div>
                 </div>
-                <div>
-                    <p>Au</p>
-                    <?php echo $fetchReservation['fin']; ?>
+                <div id="time">
+                    <div id="debut">
+                        <p>De</p>
+                        <div><?php echo $hDebut; ?></div>
+                    </div>
+                    <div id="fin">
+                        <p>À</p>
+                        <div><?php echo $hFin; ?></div>
+                    </div>
                 </div>
-            </div>
 
-        </section>
-        <section id="participants">
-    
-            <div id="cadre">
-                <?php echo $fetchReservation['participants']; ?>
-            </div>
-                <span><p>Rejoignez <?php echo $fetchReservation['login']; ?> et 'add'ez-vous !</p></span>
-            <form action="reservation.php" method="post">
-                <button class="addurself" type="submit" name="addurself">Add yourself</button>
-            </form>
+        </article>
 
-        </section>
-
-    </article>
     </main>
     <footer>
         

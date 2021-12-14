@@ -84,11 +84,11 @@ if(isset($_POST['reserver'])){
             echo $jourErr;
         }
 
-        if($heureFin - $heureDebut >"1:00"){
-            $validation = false;
-            $heureErr = "Vous ne pouvez réserver la salle plus d'une heure.";
-            echo $heureErr;
-        }
+        // if(@$heureFin - @$heureDebut > "1:00"){
+        //     $validation = false;
+        //     $heureErr = "Vous ne pouvez réserver la salle plus d'une heure.";
+        //     echo $heureErr;
+        // }
 
     if ($validation){
 
