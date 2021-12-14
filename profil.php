@@ -94,37 +94,43 @@ if (isset($_POST['sauvimg'])){
         </section>
     </header>  
     <main>
-    <article id="pourimage"><?php
+      <article id="backg">
+          <section id="pourimage"><?php
+              if(@!$_SESSION['imgprofil']){ ?>
+                  <img class="imgprofil" src="Uploads/default.png" alt="Profile picture" class='profil' width="200px" height="200px">   
+            <?php }else {
+              ?>
+            <img class="imgprofil" src="Uploads/<?php echo $_SESSION['imgprofil']; ?>" alt="Profile picture" class='profil' width="200px" height="200px">
+          <?php } ?>
+                  
+                  <label id="labelprofil" for="toggle-1">Click me</label>
+                  <input type="checkbox" id="toggle-1">
+                  <div id="saveimg">
+                      <form action="profil.php" method="POST" enctype="multipart/form-data">
+                          <input type="file" name="profilImg">
+                          <span><?php echo @$profilErr; echo @$pictureErr; echo @$sizeErr; ?></span>
+                          <div><button class="boutonsauv" type="submit" name="sauvimg" value="Sauvegarder">Sauvegarder</button></div>
+                      </form>
+                  </div>
+              </section>
+            <section class="formbackg">
+              <form action="profil.php" method="post">
+                <div class="centered">
+                      <label class="labelprofil" for="name">Login :</label>
+                      <input type="text" id="login" value="<?php echo $_SESSION['login']?>" name="user_login"> <p class="error"><?php echo @$loginErr;?></p>
 
-        if(@!$_SESSION['imgprofil']){ ?>
-            <img class="imgprofil" src="Uploads/default.png" alt="Profile picture" class='profil' width="200px" height="200px">   
-       <?php }else {
-        ?>
-      <img class="imgprofil" src="Uploads/<?php echo $_SESSION['imgprofil']; ?>" alt="Profile picture" class='profil' width="200px" height="200px"> 
-    <?php } ?>
-            <form action="profil.php" method="POST" enctype="multipart/form-data">
-                  <input type="file" name="profilImg">
-                  <span><?php echo @$profilErr; echo @$pictureErr; echo @$sizeErr; ?></span>
-                  <button class="boutonsauv" type="submit" name="sauvimg" value="Sauvegarder">Sauvegarder</button>
-            </form>
-        </article>
-      <article class="formbackg">
-        <form action="profil.php" method="post">
-          <div class="centered">
-                <label for="name">Login :</label>
-                <input type="text" id="login" value="<?php echo $_SESSION['login']?>" name="user_login"> <p class="error"><?php echo @$loginErr;?></p>
-
-                <label for="msg">Mot de passe :</label>
-                <input type="password" id="pass" name="password" required><p class="error"><?php echo @$passwordErr;?></p>
-                <label for="msg">Confirmation du mot de passe :</label>
-                <input type="password" id="pass2" name="password2" required
-                ><?php echo @$confpasswordErr;?>
-            <div class="boutons1">
-                <button class="boutonprofil" type="submit" name="enregistrer">Save the changes</button>
-            </div>
-          </div>
-        </form>
-      </article>
+                      <label class="labelprofil" for="msg">Mot de passe :</label>
+                      <input type="password" id="pass" name="password" required><p class="error"><?php echo @$passwordErr;?></p>
+                      <label class="labelprofil" for="msg">Confirmation du mot de passe :</label>
+                      <input type="password" id="pass2" name="password2" required
+                      ><?php echo @$confpasswordErr;?>
+                  <div class="boutons1">
+                      <button class="boutonprofil" type="submit" name="enregistrer">Save the changes</button>
+                  </div>
+                </div>
+              </form>
+            </section>
+    </article>
     </main>
     <footer>
         

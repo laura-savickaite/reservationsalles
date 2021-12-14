@@ -6,6 +6,7 @@
 /* IV. ADD AN EVENT */
 /* V. INSCRIPTION */
 /* VI. CONNEXION */
+/* VII. PROFIL */
 
 
 
@@ -455,4 +456,58 @@ li {
 #connexion {
     text-align: center;
     margin-left: 2vw;
+}
+
+/* VII. PROFIL */
+
+#backg {
+margin-left: 32vw;
+margin-top: 25vh;
+}
+
+.imgprofil {
+    border-radius: 50%;
+    border: 2px solid #FDFAF6;    
+    float: left;
+    shape-outside: circle();
+    margin-right: 7%;
+}
+
+#saveimg {
+    visibility: hidden;
+    position: absolute;
+    display: block;
+}
+
+input[type=checkbox] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+ }
+
+ input[type=checkbox]:checked ~ #saveimg {
+    visibility: visible;
+    position: absolute;
+    top: 70vh;
+    display: block;
+ }
+
+ #labelprofil {
+    -webkit-appearance: push-button;
+    -moz-appearance: button; 
+    display: inline-block;
+    margin: 60px 0 10px 0;
+    cursor: pointer;
+    position: absolute;
+    top: 55vh;
+    left: 37vw;
+ }
+
+
+.formbackg {
+    text-align: justify;
+}
+
+.labelprofil {
+    text-align: start;
 }
