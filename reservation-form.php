@@ -6,7 +6,8 @@ error_reporting(0);
 
 session_start();
 
-$connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
+// $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
+$connect = mysqli_connect('localhost', 'laura_savickaite', 'heliosmapuce1997', 'laura-savickaite_reservationsalles');
 
 $login = $_SESSION['login'];  
         

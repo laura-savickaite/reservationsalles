@@ -1,6 +1,7 @@
 <?php
  
-$connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
+// $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
+$connect = mysqli_connect('localhost', 'laura_savickaite', 'heliosmapuce1997', 'laura-savickaite_reservationsalles');
 
 
 if(!empty($_POST)){

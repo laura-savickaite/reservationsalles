@@ -7,7 +7,8 @@ connectées peuvent accéder aux événements. -->
 <?php
 session_start();
 
-$connect = mysqli_connect('localhost', 'root', '', 'reservationsalles');
+// $connect = mysqli_connect('localhost', 'root', '', 'reservationsalles');
+$connect = mysqli_connect('localhost', 'laura_savickaite', 'heliosmapuce1997', 'laura-savickaite_reservationsalles');
 mysqli_set_charset($connect,"utf8");
 
 if(!isset($_SESSION['login'])){
