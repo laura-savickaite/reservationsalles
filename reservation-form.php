@@ -2,6 +2,7 @@
 début, date de fin. -->
 
 <?php
+error_reporting(0);
 
 session_start();
 
@@ -30,8 +31,7 @@ if(isset($_POST['reserver'])){
     //pour empêcher de s'inscrire plus d'un jour
     $jDebut = date('d',$time);
     // pour vérifier l'heure par la suite - ne pas dépasser les 1h
-    $heureExt = explode(' ', $newformatDebut); 
-    $heureDebut = end($heureExt); 
+    $heureDebut = date("H:i:s",$time);
 
 
         $fin=$_POST['findate'];
@@ -39,8 +39,9 @@ if(isset($_POST['reserver'])){
     $newformatFin = date("Y-m-d H:i:s",$time1);
     $jourFin = date('D',$time1);
     $jFin = date('d',$time1);
-    $heureExt1 = explode(' ', $newformatFin); 
-    $heureFin = end($heureExt1);
+    $heureFin = date("H:i:s",$time1);
+
+    $uneHeure = date("1:00:00");
  
 
     // on va d'abord vérifier les erreurs possibles : champs vides, créneaux déjà réservés, plus d'une heure, plus d'un jour, jour de fin antérieur au jour de fin == validation false
@@ -84,14 +85,13 @@ if(isset($_POST['reserver'])){
             echo $jourErr;
         }
 
-        if(@$heureFin - @$heureDebut > "1:00"){
+        if(@$heureFin - @$heureDebut > @$uneHeure){
             $validation = false;
             $heureErr = "Vous ne pouvez réserver la salle plus d'une heure.";
             echo $heureErr;
         }
 
     if ($validation){
-
         $requestId = mysqli_query($connect, "SELECT `id` FROM `utilisateurs` WHERE `login`='".$login."'");
         $recupId = mysqli_fetch_assoc($requestId);
         foreach ($recupId as $id){

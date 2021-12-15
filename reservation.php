@@ -24,14 +24,6 @@ if(!isset($_SESSION['login'])){
     $jDebut = date("l d-m-y",$deb);
     $hDebut = date("H:00",$deb);
     $hFin = date("H:00",$fi);
-
-    var_dump($fetchReservation['type_activité']);
-
-    if($fetchReservation['type_activité']=="sport"){
-        echo "sport";
-    }elseif($fetchReservation['type_activité']=="loisirs"){
-        echo "loisirs";
-    }
 }
 
 
