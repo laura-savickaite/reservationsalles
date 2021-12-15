@@ -2,8 +2,8 @@
 
 session_start();
 
-$connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
-// $connect = mysqli_connect('localhost', 'laura_savickaite', 'heliosmapuce1997', 'laura-savickaite_reservationsalles');
+// $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
+$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservatiosalles');
 
 if (isset($_POST['connexion'])){
 
