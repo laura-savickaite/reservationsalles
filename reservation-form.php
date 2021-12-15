@@ -84,11 +84,11 @@ if(isset($_POST['reserver'])){
             echo $jourErr;
         }
 
-        // if(@$heureFin - @$heureDebut > "1:00"){
-        //     $validation = false;
-        //     $heureErr = "Vous ne pouvez réserver la salle plus d'une heure.";
-        //     echo $heureErr;
-        // }
+        if(@$heureFin - @$heureDebut > "1:00"){
+            $validation = false;
+            $heureErr = "Vous ne pouvez réserver la salle plus d'une heure.";
+            echo $heureErr;
+        }
 
     if ($validation){
 
@@ -114,16 +114,6 @@ if(isset($_POST['reserver'])){
 </head>
 <body>
 <header>
-        <?php 
-        if(!isset($login)){ ?>
-
-        <section class="navbar">
-            <a href="inscription.php"><p>Sign in</p></a>
-            <a href="connexion.php"><p>Log in</p></a>
-            <a href="planning.php"><p>Planning</p></a>
-        </section>
-        <?php
-        }else { ?>
         <section class="navbar">
             <a id="rose" href="index.php"><p>Index</p></a>
             <a id="bleu" href="profil.php"><p>Mon profil</p></a> 
@@ -132,22 +122,21 @@ if(isset($_POST['reserver'])){
                 <button class="boutondeco" type="submit" name="deco">Deconnexion</button>
             </form>
         </section>
-        <?php
-        }
-        
-        ?>
+
     </header>
     <main>
         <article id="reservation">
             <section>
-                <form action="reservation-form.php" method="post">
+                <form action="reservation-form.php" method="post" name="type">
                     <div id="saveslot">
                         <div class="label">
                             <label for="activités">Type d'activité:</label>
                             <select id="activites" name="type">
-                                <option value="loisirs">Loisirs</option>
                                 <option value="scolaire">Scolaire</option>
+                                <option value="loisirs">Loisirs</option>
+                                <option value="sport">Sport</option>
                                 <option value="social">Social</option>
+                                <option value="loisirs">Loisirs</option>
                                 <option value="festivite">Festivités</option>
                             </select>
                         </div>

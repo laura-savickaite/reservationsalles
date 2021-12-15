@@ -163,25 +163,8 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                     .social:hover .tooltiptext {
                                         visibility: visible;
                                             }
-                                    </style><?php;
-                                }elseif ($value['type_activité'] == "loisirs"){ ?>
-                                    <style>.loisirs  {background-color: #FFAAA7;
-                                                    }
-                                            .loisirs .tooltiptext {
-                                                visibility: hidden;
-                                                width: 120px;
-                                                background-color: #5D534A;
-                                                color: #FDFAF6;
-                                                text-align: center;
-                                                padding: 5px 0;
-                                                border-radius: 3px;
-                                                position: absolute;
-                                                z-index: 1;
-                                                }
-                            
-                                            .loisirs:hover .tooltiptext {
-                                                visibility: visible;
-                                                    }</style><?php ;
+                                    </style>
+                                    <?php
                                 }elseif ($value['type_activité'] == "scolaire"){ ?>
                                     <style>.scolaire  {background-color: #98DDCA;
                                     }
@@ -200,7 +183,28 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                     .scolaire:hover .tooltiptext {
                                         visibility: visible;
                                             }
-                                    </style><?php ;
+                                    </style>
+                                    <?php
+                                }elseif ($value['type_activité'] == "loisirs"){ ?>
+                                    <style>.loisirs  {background-color: #FFAAA7;
+                                                }
+                                        .loisirs .tooltiptext {
+                                            visibility: hidden;
+                                            width: 120px;
+                                            background-color: #5D534A;
+                                            color: #FDFAF6;
+                                            text-align: center;
+                                            padding: 5px 0;
+                                            border-radius: 3px;
+                                            position: absolute;
+                                            z-index: 1;
+                                            }
+                        
+                                        .loisirs:hover .tooltiptext {
+                                            visibility: visible;
+                                                }
+                                        </style>
+                                    <?php
                                 }elseif ($value['type_activité'] == "sport"){ ?>
                                     <style>.sport  {background-color: #D5ECC2;
                                     }
@@ -219,11 +223,12 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                     .sport:hover .tooltiptext {
                                         visibility: visible;
                                             }
-                                    </style><?php;
-                                }elseif ($value['type_activité'] == "festivites"){ ?>
-                                    <style>.festivites  {background-color: #F6DFEB;
+                                    </style>
+                                    <?php
+                                }elseif ($value['type_activité'] == "festivite"){ ?>
+                                    <style>.festivite  {background-color: #F6DFEB;
                                         }
-                                    .festivites .tooltiptext {
+                                    .festivite .tooltiptext {
                                             visibility: hidden;
                                             width: 100px;
                                             background-color: #5D534A;
@@ -235,7 +240,7 @@ $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
                                             z-index: 1;
                                             }
                             
-                                    .festivites:hover .tooltiptext {
+                                    .festivite:hover .tooltiptext {
                                         visibility: visible;
                                             }  
                                         </style><?php ;
