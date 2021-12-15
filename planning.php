@@ -21,18 +21,6 @@ $queryPlanning = mysqli_query($connect, "SELECT utilisateurs.login, reservations
 $fetchPlanning = mysqli_fetch_all($queryPlanning, MYSQLI_ASSOC);
 
 
-//date("Y-m-d", strtotime("-1 week")) retourne la date d'il y a une semaine 
-//Si tu veux récupérer la semaine suivante, tu incrémente simplement la valeur du paramètre week de 1 dans ta fonction.
-//Regarde la doc de strtotime, il y a un second paramètre facultatif pour indiquer la date de référence :
-// int strtotime ( string $time [, int $now = time() ] )
-// Par défaut, si tu ne le renseigne pas, il correspondra à la date du jour.Il faut le renseigner avec le timestamp de la semaine que tu veux récupérer.
-// $query="SELECT * FROM table";
-// $result=mysql_query($query)or die (mysql_error());
-// $row=mysql_fetch_assoc($result)or die (mysql_error());
-// $date=$row["DateTime"];// DateTimes est le nom du champs qui stocke les dates
-// $DATE=$date("Y-m-d", strtotime("-1 day")) ;
-
-
 // $today=time();
 // $nextJour = time() + (24 * 60 * 60);
 //                    // 24 hours; 60 mins; 60 secs
