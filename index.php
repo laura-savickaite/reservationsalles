@@ -15,6 +15,7 @@ $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>Index || BookWithMe</title>
+    <link rel="shortcut icon" type="image/jpg" href="Images/planner.png"/>
 </head>
 <body>
     <header>
@@ -46,7 +47,7 @@ $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
         <p id = "txtdescri">An experimental little planner where everyone can plan their events. Book a room in order to arrange something and explore your potential. Check the schedule first, choose your ideal slot and book away! The others will be able to look into your event and maybe add themselves to it.</p>
     </main>
     <footer>
-        github
+        <a href="https://github.com/laura-savickaite/reservationsalles"><img src="Images/github.png" alt="Profile picture" class='profil' width="30px">  </a>
     </footer>
 </body>
 </html>

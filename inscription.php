@@ -61,6 +61,7 @@ if(!empty($_POST)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>Inscription || BookWithMe</title>
+    <link rel="shortcut icon" type="image/jpg" href="Images/planner.png"/>
 </head>
 <body>
   <header>

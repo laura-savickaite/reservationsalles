@@ -81,6 +81,12 @@ a {
     box-shadow: inset 0 0px 0 #faf5ea, inset 0 -5px 0 #F6D7A7;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    margin: 2%;
+}
+
 button {
     border:none;
     background-color: #faf5ea;
