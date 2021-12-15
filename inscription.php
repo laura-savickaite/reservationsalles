@@ -1,7 +1,7 @@
 <?php
  
 // $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservatiosalles');
+$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservationsalles');
 
 
 if(!empty($_POST)){

@@ -3,7 +3,7 @@
 session_start();
 
 // $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservatiosalles');
+$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservationsalles');
 
 @$login = $_SESSION['login'];
 ?>
