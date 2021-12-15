@@ -6,8 +6,8 @@ error_reporting(0);
 
 session_start();
 
-// $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laura_savickaite', 'heliosmapuce1997', 'laura-savickaite_reservationsalles');
+$connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
+// $connect = mysqli_connect('localhost', 'laura_savickaite', 'heliosmapuce1997', 'laura-savickaite_reservationsalles');
 
 $login = $_SESSION['login'];  
         
@@ -37,10 +37,10 @@ if(isset($_POST['reserver'])){
 
         $fin=$_POST['findate'];
         $time1 = strtotime($fin);
-    $newformatFin = date("Y-m-d H:i:s",$time1);
+    $newformatFin = date("Y-m-d H:00",$time1);
     $jourFin = date('D',$time1);
     $jFin = date('d',$time1);
-    $heureFin = date("H:i:s",$time1);
+    $heureFin = date("H:00",$time1);
 
     $uneHeure = date("1:00:00");
  
