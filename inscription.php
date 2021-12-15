@@ -1,7 +1,6 @@
 <?php
  
-// $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservationsalles');
+ require('bdd_connect.php');
 
 
 if(!empty($_POST)){

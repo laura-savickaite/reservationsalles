@@ -7,9 +7,7 @@ connectées peuvent accéder aux événements. -->
 <?php
 session_start();
 
-// $connect = mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservationsalles');
-mysqli_set_charset($connect,"utf8");
+require('bdd_connect.php');
 
 if(!isset($_SESSION['login'])){
     header('Location:index.php');

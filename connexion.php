@@ -2,8 +2,7 @@
 
 session_start();
 
-// $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservationsalles');
+require('bdd_connect.php');
 
 if (isset($_POST['connexion'])){
 

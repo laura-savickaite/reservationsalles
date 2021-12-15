@@ -6,8 +6,7 @@ error_reporting(0);
 
 session_start();
 
-// $connect=mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservationsalles');
+require('bdd_connect.php');
 
 $login = $_SESSION['login'];  
         

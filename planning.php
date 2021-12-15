@@ -13,8 +13,7 @@ ont une durée fixe d’une heure. -->
 session_start();
 $login = $_SESSION['login'];
 
-// $connect = mysqli_connect('localhost', 'root', '', 'reservationsalles');
-$connect = mysqli_connect('localhost', 'laurasavickaite', 'Lilirosesa1997.', 'laura-savickaite_reservationsalles');
+require('bdd_connect.php');
 
 mysqli_set_charset($connect,"utf8");
 
